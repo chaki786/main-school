@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 p-5">
+			<h3>Your Conversations</h3>
+		</div>
+	</div>
+	<div class="love">
+		<a href = "{% url 'teacher:dashboard' %}" ><i class='fas fa-home' style='font-size:30px'></i></a>
+	  </div>
+
+	<div class="row">
+		<div class="col-md-12 p-5">
+			<form method="GET" action="{% url 'teacher:create-thread' %}">
+				<button class="btn btn-light p-3" type="submit">Start a Conversation</button>
+			</form>
+		</div>
+	</div>
+
+	{% for thread in threads.all %}
+	<div class="row mb-3">
+		<div class="card col-md-12 p-5 shadow-sm">
+			<a class="stretched-link" href="{% url 'teacher:thread' thread.pk %}"></a>
+{% if thread.sender.teacher %}
+    <a href="{% url 'teacher:profile' thread.sender.teacher.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.sender.teacher.profile_photo.url }}" />
+        {{ thread.sender }}
+    </a>
+{% elif thread.sender.student %}
+    <a href="{% url 'student:profile' thread.sender.student.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.sender.student.profile_photo.url }}" />
+        {{ thread.sender}}
+    </a>
+{% else %}
+    <a href="{% url 'hod:profile' thread.sender.principal.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.sender.principal.school.profile_photo.url }}" />
+        {{ thread.sender }}
+    </a>
+{% endif %}
+- 
+{% if thread.receiver.teacher %}
+    <a href="{% url 'teacher:profile' thread.receiver.teacher.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.receiver.teacher.profile_photo.url }}" />
+        {{ thread.receiver}}
+    </a>
+{% elif thread.receiver.student %}
+    <a href="{% url 'student:profile' thread.receiver.student.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.receiver.student.profile_photo.url }}" />
+        {{ thread.receiver }}
+    </a>
+{% else %}
+    <a href="{% url 'hod:profile' thread.receiver.principal.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.receiver.principal.school.profile_photo.url }}" />
+        {{ thread.receiver }}
+    </a>
+{% endif %}
+			<form method="post" action="{% url 'teacher:delete-thread' thread.pk %}">
+				{% csrf_token %}
+				<button type="submit" class="btn btn-danger">Delete</button>
+			</form>
+		</div>
+	</div>
+	{% endfor %}
+	
+</div>
+
+{% endblock content %}

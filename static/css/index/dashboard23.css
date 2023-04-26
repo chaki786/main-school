@@ -1,0 +1,231 @@
+.dropdown {
+  margin-top: 50px;
+  text-align: center;
+}
+.dropdown-menu {
+width: 300px;
+max-height: 400px;
+overflow-y: auto;
+}
+.dropdown-menu {
+  /* your existing styles */
+  position: relative;
+  animation-name: dropdown;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transform-origin: top center;
+}
+
+@keyframes dropdown {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+
+.dropdown-message {
+margin-top: 5px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.badges {
+  position: absolute;
+  transform: translate(50%, -50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.1rem 0.3rem;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  bottom: -8px;
+  left:  480px;
+}
+
+.badge-danger {
+  background-color: red;
+}
+
+.fa-user-plus {
+  position: relative;
+}
+
+.fa-user-plus:hover .badges {
+  visibility: visible;
+}
+
+.fa-user-plus .badges {
+  visibility: hidden;
+}
+
+.badge {
+position: absolute;
+top: 0;
+right: 0;
+font-size: 0.7rem;
+padding: 0.2rem 0.4rem;
+border-radius: 50%;
+}
+
+.dropdown-header {
+font-size: 0.8rem;
+font-weight: bold;
+color: #333;
+padding: 0.5rem 1rem;
+margin-bottom: 0;
+text-transform: uppercase;
+border-bottom: 1px solid #dee2e6;
+}
+
+.dropdown i {
+  position: relative;
+  color: #007bff;
+  font-size: 28px;
+  padding: 10px;
+  margin-left: 150px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.dropdown i span {
+  visibility: hidden;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown i:hover {
+  transform: scale(1.2);
+}
+
+.dropdown i:hover span {
+  visibility: visible;
+}
+
+
+.gb{
+  margin-top: -50px;
+  margin-left: 85%;
+  padding: 10px;
+}
+
+.dropbtn1 {
+  border: none;
+  background-color:white;
+}
+
+.dropbtn1 i{
+  color: #007bff;
+  font-size: 28px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a {
+  color: black;
+  margin-left: 10%;
+}
+
+.dropdown-contents {
+  background-color: #f1f1f1;
+	min-width: 220px;
+	box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+	font-size: 0.9rem;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease-in;
+  -moz-transition: opacity .3s ease-in;
+  -o-transition: opacity .3s ease-in;
+  transition: opacity .3 ease-in;
+}
+
+.dropdown-contents a {
+  text-align: right;
+  font-size: 20px;
+  color: royalblue;
+  padding: 10px 12px;
+  display: block;
+}
+
+.dropdown-contents a:hover {
+  background-color: gainsboro;
+}
+
+.show {
+  display: block;
+  opacity: 1;
+  z-index: 11;
+}
+.dropdown-item-parent {
+	position: relative;
+	display: block;
+}
+
+.dropdown-item-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 1.8rem;
+	padding-right: 5px;
+	transition: 0.3s
+}
+
+.dropdown-item-close:hover {
+	color: rgb(180, 25, 25);
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+background-color: #f8f9fa;
+color: #212529;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+background-color: #e9ecef;
+color: #212529;
+}
+
+.notification-icon {
+  position: relative;
+  display: inline-block;
+  margin-left: 10%;
+}
+
+.notification-icon .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 19px;
+}
+
+.notification-icon i {
+  color: #007bff;
+  font-size: 28px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.notification-badge {
+	transition: 0.3s;
+}
+
+.notification-badge:hover {
+	cursor: pointer;
+	opacity: 0.75;
+	transition: 0.3s;
+}

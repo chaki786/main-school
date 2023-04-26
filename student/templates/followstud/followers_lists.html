@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index/follow.css' %}" />
+    <h1 class="page-title">{{ profile.user}}</h1>
+    
+    <div class="mb-3">
+        <p>Followers: {{ followers|length }}</p>
+    </div>
+    
+    <ul>
+    {% for follower in followers %}
+        {% if follower.teacher %}
+    <a href="{% url 'teacher:profile' follower.teacher.id %}">
+        <img class="round-circle post-img" height="50" width="50" src="{{ follower.teacher.profile_photo.url }}" />
+        {{ follower.username }}
+    </a>
+{% elif follower.student %}
+    <a href="{% url 'student:profile' follower.student.id %}">
+        <img class="round-circle post-img" height="50" width="50" src="{{ follower.student.profile_photo.url }}" />
+        {{ follower.username }}
+    </a>
+{% else %}
+    <a href="{% url 'hod:profile' follower.principal.id %}">
+        <img class="round-circle post-img" height="50" width="50" src="{{ follower.principal.school.profile_photo.url }}" />
+        {{ follower.username }}
+    </a>
+{% endif %}
+
+    {% empty %}
+        <li>No followers yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

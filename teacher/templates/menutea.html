@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/index/menu.css' %}" />
+    <body>
+        
+        <div class="navbar">
+            <a href="{% url 'polls:menu' school_id=request.user.teacher.principal.school.id %}">School About</a>
+            <a href="{% url 'teacher:manage_teacher' pk=request.user.teacher.pk %}">Self</a>
+            <a href="{% url 'teacher:photo' %}">Photo</a>
+            <a href="{% url 'teacher:rating' %}">Rating</a>
+            <a href="{% url 'teacher:dashboard' %}">Home</a>
+        </div>
+
+        <div>
+
+            {% include 'posttea/post_list.html' %}
+            
+        </div>
+       
+
+    <script src="{% static 'java/index/menu.js' %}"></script>
+    
+{% endblock content %}

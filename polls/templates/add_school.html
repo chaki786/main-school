@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/regssch.css' %}" />
+
+<div class="roo">
+    <h1>Add School</h1>
+</div>
+<body style="background-image:url('{% static 'images/school.jpg' %}');background-repeat: no-repeat;background-size:100%"></body>
+    <form role="form" method="POST" class="form-style-9" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div id="profile-container">
+                <image id="profileImage" src= "{{students.photo_url}}" style="width:100px" /></div>
+                <input id="imageUpload"  type="file" name="profile_photo"  required="" capture>
+                <label id ='img' for="name"><strong>School Photo Upload </strong></label>
+
+                <div class="container">
+                        <ul class="personal-details">
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="country"> <strong> Country </strong></label>
+                                        <td>
+                                            <select name="country" id="country">
+                                            <option value="-1">-- select Country --</option>
+                                            </select>
+                                        </td>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="state"> <strong> State </strong></label>
+                                        <td>
+                                            <select name="state" id="state">
+                                            <option value="-1">-- select State --</option>
+                                            </select>
+                                        </td>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="city"> <strong> City </strong></label>
+                                        <td>
+                                            <select name="city" id="city">
+                                            <option value="-1">-- select City --</option>
+                                            </select>
+                                        </td>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="schooltype"> <strong> Types of School </strong></label>
+                                        <td>
+                                            <select name="schooltype" id="schooltype">
+                                            <option value="-1">-- select Schooltype --</option>
+                                            <option value="Private">Private</option>
+                                            <option value="Government">Government</option>
+                                            <option value="Public">Public</option>
+                                            </select>
+                                        </td>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="schoolname"> <strong> SchoolName </strong></label>
+                                        {{form2.schoolname}}
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="addredd"> <strong> School Address </strong></label>
+                                        <input type="text" id="address" name="address" tabindex="1"/>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submit-div">
+                        <ul>
+                            <li>    
+                                <button class="link_button" style='margin-top:10px;' type='submit' >Add School</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+
+<script src="{% static "java/index/aboutss.js" %}"></script>
+
+
+{% endblock content %}

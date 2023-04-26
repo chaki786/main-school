@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-5 col-sm-12 border-bottom">
+      <div class="row">
+        {% if is_video %}
+        <video width="320" height="240" controls>
+          <source src="{{ post.image_or_video.url }}" type="video/mp4">
+        </video>
+        {% elif is_image %}
+        <img src="{{ post.image_or_video.url }}" alt="{{ post.caption }}">
+        {% endif %}
+      </div>
+
+      <div class="body">
+        <p>{{ post.body }}</p>
+      </div>
+
+      <div>
+        <p class="post-text">
+          <a class="text-primary post-link" href="">{{ post.author }}</a> {{ post.created_on }}
+        </p>
+      </div>
+
+      <div>
+        <p class="post-text">
+          <span onclick="shareToggle('{{ post.pk }}')"><i class="far fa-share-square share-btn"> Share</i></span>
+        </p>
+      </div>
+
+      <form method="POST" action="{% url 'student:share-post' post.pk %}" class="d-none" id="{{ post.pk }}">
+        {% csrf_token %}
+        {{ shareform | crispy }}
+        <div class="d-grid gap-2">
+          <button class="btn btn-success mt-3">share the post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

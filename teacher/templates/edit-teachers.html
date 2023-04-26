@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index/studentss.css' %}" />
+<div class="roo">
+    <h1>Edit Profile</h1> 
+</div>
+
+<form role="form" action="{% url 'teacher:edit_teacher' %}" method="post" class="form-style-9" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="profile-container">
+        <img id="profileImage" src="{{ teachers.profile_photo.url }}" style="width:100px" />
+        <div class=forme>{{ form2.profile_photo }}</div>
+    </div>
+    <ul class="personal-details">
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="country"><strong>Country</strong></label>
+                    {{  teachers.principal.school.country }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="state"><strong>State</strong></label>
+                    {{ teachers.principal.school.state }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="city"><strong>City</strong></label>
+                    {{  teachers.principal.school.city }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="first_name"><strong>First Name</strong></label>
+                    {{  teachers.first_name }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="last_name"><strong>Last Name</strong></label>
+                    {{  teachers.last_name }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <td><strong>Gender</strong></td>
+                    <td>{{  teachers.gender }}</td>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="dob"><strong>Date of Birth</strong></label>
+                    {{  teachers.dob }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="{{ form2.principal.id_for_label }}"><strong>School</strong></label>
+                    {{ form2.principal }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="qualification"><strong>Qualification</strong></label>
+                    {{ form2.qualification }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="classs"><strong>Class</strong></label>
+                    {{ form2.classs }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="section"> <strong> Section </strong> </label>
+                    {{ form2.section }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="join"><strong>Join</strong></label>
+                    {{ form2.join }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    <label for="seperate"><strong>Seperate</strong></label>
+                    {{ form2.seperate }}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="column">
+                <li>
+                    {{ formset.management_form }}
+                    {% for form in formset %}
+                    <strong>{{ form.as_p }}</strong>
+                    {% endfor %}
+                </li>
+            </ul>
+        </li>
+    <div class="submit-div">
+        <ul>
+            <li>    
+                <button class="link_button" style='margin-top:10px;' type='submit' >Save</button>
+                <button class="link_button2" style='margin-top:10px;' type='cancel' >Cancel</button>
+            </li>
+        </ul>
+    </div>
+</form>
+<script src="{% static "java/index/aboutss.js" %}"></script>
+
+{% endblock content %}

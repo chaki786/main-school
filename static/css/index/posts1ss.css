@@ -1,0 +1,237 @@
+.thumbs-up-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbs-up-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 350px;
+  box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-size: 0.9rem;
+}
+
+.dropdown-content span {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+  
+.remove-default-btn {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	color: #777;
+	font-size: 16px;
+	}
+.remove-default-btn:hover {
+	color: #000;
+}
+
+.remove-default-btn1 {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	color: #777;
+	font-size: 16px;
+	margin-right: -340px;
+	margin-left: 350px;
+	}
+	
+.remove-default-btn1:hover {
+	color: #000;
+}
+
+.ho{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+.edit-color {
+	color: #333;
+}
+
+.post-link {
+	text-decoration: none;
+}
+
+.post-text {
+	padding-top: 0.5rem;
+}
+
+.post-img {
+	float: left;
+	margin-right: 1rem;
+}
+
+.post-image {
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.child-comment {
+	margin-left: 2rem;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 350px;
+	box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	font-size: 0.9rem;
+}
+
+.dropdown-content a {
+	color: #000;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown-item-parent {
+	position: relative;
+	display: block;
+}
+
+.dropdown-item-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 1.8rem;
+	padding-right: 5px;
+	transition: 0.3s
+}
+
+.dropdown-item-close:hover {
+	color: rgb(180, 25, 25);
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.inbox-icon-container {
+	margin-right: 15px;
+}
+
+.inbox-icon {
+	color: #333;
+	transition: 0.5s;
+}
+
+.inbox-icon:hover {
+	transition: 0.5s;
+}
+
+.empty-text {
+	color: #777;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.sent-message {
+	background-color: #f3f3f3;
+	border-radius: 30px;
+	padding: 10px 25px;
+	width: 35%;
+}
+
+.received-message {
+	background-color: rgb(1, 196, 255);
+	color: #fff;
+	border-radius: 30px;
+	padding: 10px 25px;
+	width: 35%;
+}
+
+.message-receiver-container {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.message-image {
+	border-radius: 10px;
+	max-width: 35%;
+	height: auto;
+}
+
+.inbox-icon {
+	margin-right: 5px;
+}
+
+.share-btn {
+	cursor: pointer;
+}
+
+.shared-post {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.shared-post video {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.shared-post img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+
+.body a {
+	text-decoration: none;
+}
+
+.lossl{
+	margin-bottom: 5%;
+}
+#comment{
+	margin-top: 14%;
+	margin-bottom: 5%;
+	margin-left: -60%;
+	width: 100%;
+}
+.jo{
+	margin-right: -70%;
+	margin-top: 14%;
+}
+.joo{
+	margin-top: 4%;
+}
+.lossssl{
+	margin-top: 24%;
+	margin-left: -88%;
+}

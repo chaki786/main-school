@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/teass.css' %}" />
+
+
+<h1>Student Form</h1>
+
+{% for student in students %}
+<div class="love">
+  <a href="{% url 'polls:menu' student.id %}">
+    <i class='fas fa-home' style='font-size:30px'></i>
+  </a>
+</div>
+
+    <form class="form-style-9">
+        <div id="profile-container">
+            <a href="{% url 'student:profile' student.id %}">
+                <img src="{{ student.photo_url }}">
+            </a>
+           
+        <div class="container">
+            <ul class="column">
+                <strong> First Name</strong> {{student.first_name}}
+            </ul>
+            <ul class="column">
+                <strong>Last Name</strong> {{student.last_name}}
+            </ul>
+            <ul class="column">
+                <strong> Gender </strong>{{student.gender}}
+            </ul>
+
+            <ul class="column">
+                <strong>Date of birth </strong>{{student.dob}}
+            </ul>
+            <ul class="column">
+                <strong>School Name</strong> {{student.schoolname}}
+            </ul>
+            <ul class="column">
+                <strong>Class</strong> {{student.classs}}
+            </ul>
+            <ul class="column">
+                <strong>Section</strong> {{student.section}}
+            </ul>
+            <ul class="column">
+                <strong>Roll Number</strong> {{student.rollno}}
+            </ul>
+            <ul class="column">
+                <strong>Join</strong> {{student.join}}
+            </ul>
+            <ul class="column">
+                <strong>Seperate</strong> {{student.seperate}}
+            </ul>
+        </div>
+    </div>
+</form>
+    {% endfor %}
+{% endblock content %}

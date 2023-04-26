@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/index/menus2.css' %}" />
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <div id="profile-container">
+            <div id="profile-overlay">
+              <h1>{{ profile.school.schoolname }}</h1>
+              <a class="link_button" href="{% url 'hod:edit_profile' %}">Edit</a>
+            </div>
+            <img id="profileImage" src="{{ profile.school.profile_photo.url }}">
+        </div>
+          
+        <div class="navbar">
+            <a href="{% url 'hod:manage_principals' profile.id %}">About</a>
+            <a href="{% url 'hod:photo' %}">Photo</a>
+            <a href="{% url 'hod:list-followers' profile.pk %}" class="post-link">Add Friends</a>
+            <a href="{% url 'hod:rating' %}">Rating</a>
+            <a href = "{% url 'hod:dashboard' %}" >Home</a>
+        </div>
+
+        <div>
+
+            {% include 'post/post_list.html' %}
+            
+        </div>
+       
+
+    <script src="{% static 'java/index/menu.js' %}"></script>
+    
+{% endblock content %}

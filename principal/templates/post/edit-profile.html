@@ -1,0 +1,113 @@
+{% load static %}
+
+<div class="roo">
+    <h1>Edit profile </h1> 
+</div>
+<link rel="stylesheet" href="{% static 'css/index/aboutss3.css' %}" />
+    
+<form role="form"  method="POST" class="form-style-9" enctype="multipart/form-data">
+    {% csrf_token %}
+        
+    <div id="profile-container">
+        <img id="profileImage" src="{{ profile.school.profile_photo.url }}" style="width:100px" />
+        <div class="looo">
+            <input type="file" name="profile_photo" id="profile-photo" />
+        </div>
+    </div>
+    
+    <div class="container">
+        <ul class="personal-details">
+            <li>
+                <ul class="column">
+                    <li>
+                        <label for="country"><strong>Country</strong></label>
+                        {{ profile.school.country}}
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="column">
+                    <li>
+                        <label for="state"><strong>State</strong></label>
+                        {{ profile.school.state }}
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="column">
+                    <li>	
+                        <label for="city"><strong>City</strong></label>
+                        {{ profile.school.city }}
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="column">
+                    <li>
+                        <label for="schoolname"><strong>School Name</strong></label>
+                        {{ profile.school.schoolname }}
+                    </li>
+                </ul>
+            </li>
+            <div class='ingredient-form'>
+                <li>
+                    <ul class="column">
+                        <li>
+                            <label for="schooltype"><strong>School Type</strong></label>
+                            {{ profile.school.schooltype }}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="column">
+                        <li>
+                            <label for="address"><strong>Address</strong></label>
+                            {{ profile.school.address }}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="column">
+                        <li>
+                            <label for="address"><strong>Address</strong></label>
+                            {{ form.school}}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="column">
+                        <li>
+                            <label for="join"><strong>Join Date</strong></label>
+                            {{ form.join }}
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <li>
+                <ul class="column">
+                    <li>
+                        {% if messages %}
+                            {% for message in messages %}
+                                {% if message.tags == 'error' %}
+                                    <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% if message.tags == 'success' %}
+                                    <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+                <div class="submit-div">
+                    <ul>
+                        <li>    
+                            <button class="link_button" style='margin-top:10px;' type='submit' >Save</button>
+                            <button class="link_button2" style='margin-top:10px;' type='cancel' >Cancel</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <script src="{% static "java/index/aboutss.js" %}"></script>

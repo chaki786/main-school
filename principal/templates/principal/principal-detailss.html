@@ -1,0 +1,75 @@
+{% load static %}
+
+<div>
+
+    {% include 'about/detailss.html' %}
+    
+</div>
+
+<link rel="stylesheet" href="{% static 'css/index/aboutss11.css' %}" />
+
+<h2>Principal Form</h2>
+
+<div class="board">
+    <a class="link_button2" href="{% url 'hod:add_principal' %}">Add Form Principal</a>
+</div>
+
+
+{% for principal in principals %}
+
+    <form class="form-style-9">
+        <div class="la">
+            <h3><strong>Join-</strong>{{principal.join }} </h3>
+            <h3><strong>Seperate-</strong>{{principal.seperate}}</h3>
+        </div>
+        <div id="profile-container">
+            <a href="{% url 'hod:manage_principal' principal.id %}">
+                <img src="{{principal.photo_url}}">
+            </a>
+        </div>
+            
+        <div class="container"> 
+            <ul class="column">
+                <strong>First Name</strong> {{principal.fname}}
+            </ul>
+
+            <ul class="column">
+                <strong>Last Name</strong> {{principal.lname}}
+            </ul>
+
+            <ul class="column">
+                <strong> Gender </strong>{{principal.gender}}
+            </ul>
+
+            <ul class="column">
+                <strong>DOB </strong>{{principal.dob}}
+            </ul>
+
+            <ul class="column">
+                <strong>Qualification</strong> {{principal.qualification}}
+            </ul>
+
+            <ul class="column">
+                <strong>College Name</strong> {{principal.cname}}
+            </ul>
+
+            <ul class="column">
+                <strong>From</strong> {{principal.from1}}
+            </ul>
+
+            <ul class="column">
+                <strong>To</strong> {{principal.to}}
+            </ul>
+        </div>
+
+        <div class="submit-div">
+            <ul>
+                <li>
+                    <a class="link_button" href='{{principal.get_edit_url }}'>Edit</a> 
+                    <a class="link_button" href='{{principal.get_delete_url }}'>Delete</a> 
+                </li>
+            </ul>
+        {% endfor %}
+        </div>
+    </form>
+

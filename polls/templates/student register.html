@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/regts.css' %}" />
+
+<div class="roo">
+    <h1>Student Register</h1>
+</div>
+
+<div class="omg">
+    <p class="text-center">If you already have an account, <a href="{% url 'polls:loginn' %}" class="btn"> Login</a> instead..</p>
+</div>
+
+    <form role="form" action="{% url 'polls:student_reg' %}" method="post" class="form-style-9" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div id="profile-container">
+                <image id="profileImage" src= "{{students.photo_url}}" style="width:100px" /></div>
+                <input id="imageUpload"  type="file" name="profile_photo"  required="" capture>
+                <label id ='img' for="name"><strong>Self Photo Upload </strong></label>
+
+                <div class="container">
+                        <ul class="personal-details">
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="username"> <strong> Username </strong></label>
+                                        <input type="text" id="username" name="username" tabindex="1"/>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="{{ form.principal.id_for_label }}"><strong>School Name</strong></label>
+                                        {{form.principal}} 
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="first_name"> <strong> First Name </strong></label>
+                                        <input type="text" id="first_name" name="first_name" tabindex="1"/>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="last_name"> <strong> Last Name </strong></label>
+                                        <input type="text" id="last_name" name="last_name" tabindex="1"/>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <tr>
+                                            <td for="gender"><strong>Gender</strong></td>
+                                            <td>
+                                                <input type="radio" name="gender" value="Male">Male
+                                                <input type="radio" name="gender" value="Female">Female
+                                            </td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="dob"> <strong> Date of birth </strong></label>
+                                        <td>
+                                            {{form.dob}}       
+                                        </td>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="classs"><strong>Class</strong></label>
+                                        <select id="grade">
+                                            <option value="-1">--Select Class--</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="section"><strong> Section </strong></label>
+                                        <select id="section">
+                                          <option value="-1">--Select Section--</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="rollno"> <strong> Roll Number </strong></label>
+                                        <select id="rollno">
+                                          <option value="-1">--Select Roll Number--</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="join"> <strong> School Join </strong> </label>
+                                        <td>
+                                            {{form.join}}
+                                        </td>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="seperate"> <strong> School Seperate </strong> </label>
+                                        <td>
+                                            {{form.seperate}}
+                                        </td>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="email"> <strong> Email/Phone </strong></label>
+                                        <input type="email" id="email" name="email" tabindex="1"/>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="password"> <strong> Password </strong></label>
+                                        {{form.password}}
+                                    </li>
+                                </ul>
+                            </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    {% if message.tags == 'error' %}
+                                    <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                    {% endif %}
+                                    {% if message.tags == 'success' %}
+                                    <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="submit-div">
+                        <ul>
+                            <li>    
+                                <button class="link_button" style='margin-top:10px;' type='submit' >Register</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+ 
+<script src="{% static "java/index/abouts2.js" %}"></script>
+<script src="{% static "java/index/aboutss.js" %}"></script>
+
+{% endblock content %}

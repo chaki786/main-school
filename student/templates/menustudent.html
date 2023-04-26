@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/index/menus2.css' %}" />
+    <body>
+        
+        <div class="navbar">
+            <a href="{% url 'polls:menu' school_id=request.user.student.principal.school.id %}">School About</a>
+            <a href="{% url 'student:manage_student' pk=request.user.student.pk %}">Self</a>
+            <a href="{% url 'student:photo' %}">Photo</a>
+            <a href="{% url 'student:rating' %}">Rating</a>
+            <a href="{% url 'student:dashboard' %}" >Home</a>
+        </div>
+
+        <div>
+
+            {% include 'poststu/post_list.html' %}
+            
+        </div>
+       
+
+    <script src="{% static 'java/index/menu.js' %}"></script>
+    
+    
+{% endblock content %}

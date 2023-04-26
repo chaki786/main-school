@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index/delete.css' %}" />
+<form method='POST' action='{{principal.get_delete_url }}'>
+    {% csrf_token %}
+    <p>Are you sure you want to delete?</p>
+    <div class="roo">
+        <img src="{{item.photo_url}}"></div>
+    <div class="roo">
+        <ul><strong>Join- </strong> {{item.join}} </ul>
+        <ul><strong>Seperate- </strong>{{item.seperate}}</ul>
+        <ul><strong>First Name- </strong>{{item.fname}}</ul>
+        <ul><strong>Last Name-</strong>{{item.lname}}</ul>
+        <ul><strong>Gender-</strong>{{item.gender}}</ul>
+        <ul><strong>Qualification-</strong>{{item.qualification}}</ul>
+        <ul><strong>From1-</strong>{{item.from1}}</ul>
+        <ul><strong>To</strong>{{item.to}}</ul>
+    </div>
+    <div class="roo1">
+        <a class="link_button" href="{% url 'hod:manage_principal' item.id %}">Cancel</a>
+        <button class="link_button1" type='submit'>Yes, delete.</button>
+    </div>
+</form>
+    

@@ -1,0 +1,181 @@
+.about {
+    text-align: center;
+    margin-top: 5% ;
+    font-size: 35px;
+    color: blue;
+}
+.hidden {
+    display: none
+}
+.text1
+{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    font-size: 30px;
+    color: #216288;
+}
+
+textarea {
+    font-size: 20pt;
+    height: 150px;
+    width : 1200px;
+}
+
+.text11{
+    text-align: right;
+    margin-top: 20px; 
+}
+
+#imageUpload
+{
+    display: none;
+}
+
+input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#profile-photo {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#profileImage
+{
+    cursor: pointer;
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+}
+
+#profile-container {
+  position: relative;
+  width: 100px;
+  margin-left: 3%;
+  margin-top: 8%;
+  height: 100px;
+}
+
+#profile-container img {
+    width: 200px;
+    height: 150px;
+}
+
+.form-style-9 ul{
+    float: right;
+    padding:10px;
+    width: 80%;
+    font-size:18px;
+}
+
+.form-style-9 ul  input[type="button"],  
+.form-style-9 ul  input[type="submit"] {
+    box-shadow: inset 0px 1px 0px 0px #3985B1;
+    background-color: #216288;
+    border: 1px solid #17445E;
+    display: block;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 8px 25px;
+    text-decoration: none;
+    font: 12px Arial, Helvetica, sans-serif;
+}
+.submit-div {
+	width: 150%;
+	height: 32px;
+	margin-top: 6%;
+	padding-top: 6%;
+	bottom:0px;
+	left:0;
+}
+
+.submit-btn {	
+	padding-top: 5%;
+	display: block;
+	bottom:0;
+	left:0;
+	width: 10%;
+}
+
+.submit-div ul li{
+  display:flex;  
+  list-style:none;
+}
+
+.form-style-9 ul input[type="button"]:hover, 
+.form-style-9 ul input[type="submit"]:hover {
+    background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+    background-color: #28739E;
+}
+
+.personal-details {
+	padding-bottom:1.25%;
+    margin-top: -250px;
+}
+
+.container {
+	margin-left: -20%;
+	margin-right: 30%;
+}
+
+ul{
+  list-style: none;
+}
+
+.roo{
+    text-align: center;
+    font-size: 20px;
+    color: red;
+}
+
+.link_button {
+    text-align: center;
+    margin-top: -30px;
+    margin-left: 80px;
+    width: 80px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: #4479BA;
+    color: #FFF;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.link_button2 {
+    text-align: center;
+    margin-top: -30px;
+    margin-left: 30px;
+    width: 80px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: #4479BA;
+    color: #FFF;
+    padding: 10px 20px;
+    text-decoration: none;
+}

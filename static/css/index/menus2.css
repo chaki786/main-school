@@ -1,0 +1,200 @@
+#profile-container {
+  position: relative;
+  width: 1500px;
+  height: 300px;
+  overflow: hidden;
+}
+.like-percentage {
+  display: inline-block;
+  width: 70px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  position: relative;
+  right: -400px; /* adjust the value as needed */
+  animation: pulses 2s ease-in-out infinite;
+}
+
+@keyframes pulses {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: orange;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+.ranking {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 10px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.ranking span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: yellow;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#profile-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(76, 175, 80, 0.7);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#profile-overlay:hover {
+  opacity: 1;
+}
+
+#profile-overlay h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: lightcoral;
+}
+
+#profile-overlay a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #4CAF50;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.5s ease;
+}
+
+#profile-overlay a:hover {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+#profileImage {
+  cursor: pointer;
+  width: 1500px;
+  height: 300px;
+}
+
+.navbar {
+    overflow: auto;
+    background-color: #555;
+    width: 1500px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+  
+.navbar a {
+    float: left;
+    font-size: 25px;
+    color: white;
+    font-weight: 500px;
+    text-align: center;
+    padding: 20px 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #000;
+}
+.card {
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 0 115px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
+}
+
+.card-text {
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card {
+  animation: fade-in 0.5s ease-in-out;
+}

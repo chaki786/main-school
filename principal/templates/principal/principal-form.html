@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/aboutss3.css' %}" />
+
+<div class="roo">
+    <h1>Principal Form</h1>
+</div>
+    
+    <form role="form" action="{% url 'hod:add_principal' %}" method="post" class="form-style-9" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <div id="profile-container">
+                <image id="profileImage" src= "{{principal.photo_url}}" style="width:100px" /></div>
+                <input id="imageUpload"  type="file" name="profile_photo" placeholder="Photo" required="" capture>
+                <div class="container">
+                    
+                        <ul class="personal-details">
+                            <li>
+                                <ul class="column">
+                                    <li>	
+                                        <label for="fname"><strong>First Name </strong></label>
+                                        <input type="text" id="fname" name="fname" tabindex="1"/> 
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="lname"> <strong> Last Name </strong></label>
+                                        <input type="text" id="lname" name="lname" tabindex="1"/>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <tr>
+                                            <td for="gender"><strong>Gender</strong></td>
+                                            <td>
+                                                <input type="radio" name="gender" value="Male">Male
+                                                <input type="radio" name="gender" value="Female">Female
+                                            </td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="dob"> <strong> Date of birth </strong></label>
+                                        {{form.dob}}
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="column">
+                                    <li>
+                                        <label for="qualification"> <strong> Qualification </strong></label>
+                                        <td>
+                                            <select name="qualification" id="qualification">
+                                            <option value="-1">-- select Qualification --</option>
+                                            <option value="10">10th Class</option>
+                                            <option value="12">12th Class</option>
+                                            <option value="B.A.">B.A.</option>
+                                            <option value="BCA">BCA</option>
+                                            <option value="BBA">BBA</option>
+                                            <option value="B.Tech">B.Tech</option>
+                                            <option value="B.Com">B.Com</option>
+                                            <option value="B.Ed">B.Ed</option>
+                                        </select>
+                                    </td>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="cname"> <strong> College Name </strong></label>
+                                    <input type="text" id="cname" name="cname" tabindex="1"/>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="from1"> <strong> From </strong> </label>
+                                    {{form.from1}}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="to"> <strong> To </strong> </label>
+                                    {{form.to}}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="join"> <strong> School Join </strong> </label>
+                                    {{form.join}}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="seperate"> <strong> School Seperate </strong> </label>
+                                    {{form.seperate}}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    {{ formset.management_form }}
+                                    {% for form in formset %}
+                                        <strong> {{ form.as_p }} </strong>
+                                    {% endfor %}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    {% if message.tags == 'error' %}
+                                    <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                    {% endif %}
+                                    {% if message.tags == 'success' %}
+                                    <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="submit-div">
+                        <ul>
+                            <li>    
+                                <button class="link_button" style='margin-top:10px;' type='submit' >Save</button>
+                                <button class="link_button2" style='margin-top:10px;' type='cancel' >Cancel</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+ 
+
+<script src="{% static "java/index/aboutss1.js" %}"></script>
+
+{% endblock content %}

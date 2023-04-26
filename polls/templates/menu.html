@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/menupol.css' %}" />
+
+
+{% for principal in principals %}
+<div>
+    <div class="roo">
+        <a href = "{% url 'polls:menus' %}" ><i class='fas fa-home' style='font-size:30px'></i></a>
+        <h1>School group {{principal.school.schoolname}}</h1>
+    </div>
+    <div class="navbar">
+        <li><a href="{% url 'hod:profile' principal.id %}">View Profile</a></li>
+        <li><a href="{% url 'polls:manage_principals' principal.user.id %}">Principal</a></li>
+        <li><a href="{% url 'polls:photo' principal.id %}">Photo</a></li>
+        <li><a href="{% url 'polls:manage_teacher' principal.user.id %}">Teacher</a></li>
+        <li><a href="{% url 'polls:manage_student' principal.user.id %}">Student</a></li>
+        <li><a href="{% url 'polls:rating' principal.id %}">Rating</a></li>
+</div>
+<div>
+
+    {% include 'postpol/post_list.html' %}
+    
+</div>
+{% endfor %}
+{% endblock content %}

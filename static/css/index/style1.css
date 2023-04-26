@@ -1,0 +1,135 @@
+body {
+    animation: slideBg 29s ease-in-out infinite;
+    background-repeat: no-repeat;
+    background-size:100%;
+}
+
+  @keyframes slideBg {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .omg {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+}
+
+.omg p {
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.omg button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.omg button:hover {
+    background-color: #0062cc;
+}
+
+.omg a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.omg a:hover {
+    text-decoration: underline;
+}
+
+.h1-text-container {
+    text-align: center;
+    margin: 80px auto;
+    max-width: 700px;
+}
+
+.h1-text-container h1 {
+    color: yellow;
+    background-color: #4991dd;
+    width: 90%;
+    font-size: 50px;
+    font-weight: bold;
+    animation: zoomIn 0.5s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.images  {
+    text-align:center;
+    margin:150px auto;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.images a div {
+  animation-name: text-animation;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes text-animation {
+  0% { color: white; }
+  50% { color: red; }
+  100% { color: white; }
+}
+
+.images img {
+  box-shadow: 0 15px 35px rgba(0.2,0,0,0.2);
+  transition: transform 0.2s ease-in-out;
+  animation: pulse 2s infinite;
+}
+
+.images img:hover {
+  transform: scale(1.1);
+}
+
+
+.images a {
+    margin:0px 20px;
+    display:inline-block;
+    text-decoration:none;
+}
+
+.images a div {
+    background: red;
+    border-radius: 8px;
+    font-weight: 500px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    color: white;
+}
+

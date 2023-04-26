@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index/menus2.css' %}" />
+
+<div class="row">
+    <div class="col-sm-4">
+        <form method="get" action="{% url 'polls:menus' %}">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="Search for schools...">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    {% for school in schools %}
+        <div class="col-sm-4 mb-3">
+            <div class="card">
+                <div class="ranking"> <span>{{ school.ranking }}</span></div>
+                <a href="{% url 'polls:menu' school_id=school.id %}">
+            {% if school.posts %}
+                <div class="like-percentage">{{ school.avg_like_percentage }}%</div>
+            {% endif %}     
+                <img src="{{ school.profile_photo.url }}" class="card-img-top" alt="{{ school.schoolname }}"></a> 
+                <div class="card-body">          
+                    <h3 class="card-title">{{ school.schoolname }}</h3>
+                    <p class="card-text">{{ school.schooltype }}</p>
+                    <p class="card-text">{{ school.country }}</p>
+                    <p class="card-text">{{ school.state }}</p>
+                    <p class="card-text">{{ school.city }}</p>
+                    <a href="{% url 'polls:menu' school_id=school.id %}" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-sm-12">
+            <p>No schools found.</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

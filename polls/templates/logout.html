@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    <div style='margin-top:150px;text-align: center;'>
+        <form method='POST'>{% csrf_token %}
+            <p style='font-size: 30px;'>Are you sure you want to logout?</p>
+            <button type='submit' style='background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;'>Yes, logout.</button>
+        </form>
+    </div>
+{% else %}
+<p style='font-size: 16px;'>You're not logged in. Would you like to <a href="{% url 'polls:loginn' %}" style='color: blue; text-decoration: underline;'>login</a>?</p>
+{% endif %}
+
+{% endblock %}

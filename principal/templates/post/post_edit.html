@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-3 col-sm-6">
+            <a href = "{% url 'hod:dashboard' %}" ><i class='fas fa-home' style='font-size:20px'></i></a>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5 col-sm-12">
+            <h5>Update Your Post</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="ho">
+                    Post-type={{form.post_type}}
+                </div>
+                <div class="ho">
+                    New something={{ form.body}}
+                </div>
+                <div class="ho">
+                    <div class="row">
+                        {% if post.is_video %}
+                            <video width="320" height="240" controls>
+                                <source src="{{ post.image_or_video.url }}" type="video/mp4">
+                            </video>
+                        {% elif post.is_image %}
+                            <img src="{{ post.image_or_video.url }}" alt="{{ post.caption }}">
+                        {% endif %}
+                      </div>
+                   Pictures/videos={{ form.image_or_video}}
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success mt-3">Submit!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

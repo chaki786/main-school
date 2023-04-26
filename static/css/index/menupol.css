@@ -1,0 +1,32 @@
+.roo{
+    text-align: center;
+    font-size: 30px;
+    color: green;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+ul{
+    list-style: none;
+}
+
+.navbar {
+    overflow: auto;
+    background-color: blueviolet;
+    width: 1500px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+  
+.navbar a {
+    float: left;
+    font-size: 25px;
+    color: white;
+    font-weight: 500px;
+    padding: 20px 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: rgb(157, 73, 236);
+}

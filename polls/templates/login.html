@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/login1s.css' %}" />
+
+<div class="roo">
+    <h1>Login</h1>
+</div>
+
+<div class="omg">
+    <p class="text-center">Don't have an account? <a href="{% url 'polls:home' %}">Create an account</a>.</p>
+</div>
+
+    <form role="form" action="{% url 'polls:loginn' %}" method="post" class="form-style-9">
+        {% csrf_token %}
+
+            <div class="container">
+                    <ul class="personal-details">
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="username"> <strong> Username </strong></label>
+                                    <input type="text" id="username" name="username" tabindex="1"/>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="password"> <strong> Password </strong></label>
+                                    <input type="password" id="password" name="password" tabindex="1"/>
+                                </li>
+                            </ul>
+                        </li>
+                    <li>
+                        <ul class="column">
+                            <li>
+                                {% if messages %}
+                                {% for message in messages %}
+                                {% if message.tags == 'error' %}
+                                <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% if message.tags == 'success' %}
+                                <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="submit-div">
+                    <ul>
+                        <li>    
+                            <button class="link_button" style='margin-top:10px;' type='submit' >Login</button>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                          <a href="{% url 'polls:password_reset' %}" class="forgot-password">Forgot your password?</a>
+                        </li>
+                      </ul>                      
+                </div>
+            </form>
+            
+<div class="wave-container">
+    <div class="wave wave-1"><img src="{% static 'images/1.png' %}" ></div>
+    <div class="wave wave-2"><img src="{% static 'images/2.png' %}" ></div>
+    <div class="wave wave-3"><img src="{% static 'images/3.png' %}" ></div>
+</div>
+
+              
+
+
+{% endblock %}

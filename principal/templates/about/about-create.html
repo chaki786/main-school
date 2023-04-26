@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if not created %}
+
+<link rel="stylesheet" href="{% static 'css/index/aboutss3.css' %}" />
+
+<div class="about">
+    <h1>ABOUT </h1>
+</div>
+
+<div style='margin-top:30px;'>
+    <form action='.' method="POST">
+        {% csrf_token %}
+
+        <div class="text1">
+            <textarea name="content" id="" tabindex="3"></textarea></div>
+
+        <div class="text11">
+            <button class="link_button" style='margin-top:10px;' type='submit' >Save</button>
+            <button class="link_button2" style='margin-top:10px;' type='cancel' >Cancel</button>
+        </div>
+    </form>
+</div>
+{% else %}
+
+        
+{% endif %}
+
+    
+{% endblock content %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="love">
+  <a href = "{% url 'hod:inbox' %}" ><i class='fas fa-home' style='font-size:30px'></i></a>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="card col-md-12 mt-5 p-3 shadow-sm">
+{% if thread.sender.teacher %}
+    <a href="{% url 'teacher:profile' thread.sender.teacher.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.sender.teacher.profile_photo.url }}" />
+        {{ thread.sender }}
+    </a>
+{% elif thread.sender.student %}
+    <a href="{% url 'student:profile' thread.sender.student.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.sender.student.profile_photo.url }}" />
+        {{ thread.sender}}
+    </a>
+{% else %}
+    <a href="{% url 'hod:profile' thread.sender.principal.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.sender.principal.school.profile_photo.url }}" />
+        {{ thread.sender }}
+    </a>
+{% endif %}
+- 
+{% if thread.receiver.teacher %}
+    <a href="{% url 'teacher:profile' thread.receiver.teacher.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.receiver.teacher.profile_photo.url }}" />
+        {{ thread.receiver}}
+    </a>
+{% elif thread.receiver.student %}
+    <a href="{% url 'student:profile' thread.receiver.student.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.receiver.student.profile_photo.url }}" />
+        {{ thread.receiver }}
+    </a>
+{% else %}
+    <a href="{% url 'hod:profile' thread.receiver.principal.id %}">
+        <img class="round-circle post-img" height="30" width="30" src="{{ thread.receiver.principal.school.profile_photo.url }}" />
+        {{ thread.receiver }}
+    </a>
+{% endif %}
+
+		</div>
+	</div>
+
+	{% if message_list.all.count == 0 %}
+	<div class="row my-5">
+		<div class="col-md-12">
+			<p class="empty-text">No Messages</p>
+		</div>
+	</div>
+	{% endif %}
+
+	{% for message in message_list %}
+	<div class="row">
+		{% if message.sender_user == request.user %}
+		<div class="col-md-12 my-1">
+			{% if message.image %}
+			<div>
+				<img src="{{ message.image.url }}" class="message-image" />
+			</div>
+			{% endif %}
+			<div class="sent-message my-3">
+				<p>{{ message.body }}</p>
+				{% if message.is_read %}
+				<p class="text-muted">Seen {{ message.read_timestamp }}</p>
+				{% endif %}
+				<form method="POST" action="{% url 'hod:delete-message' message.pk %}">
+					{% csrf_token %}
+					<button type="submit" class="btn btn-sm btn-danger">Delete</button>
+				</form>
+			</div>
+		</div>
+		{% elif message.receiver_user == request.user %}
+		<div class="col-md-12 offset-6">
+			{% if message.image %}
+			<div class="message-receiver-container ms-auto">
+				<img src="{{ message.image.url }}" class="message-image" />
+			</div>
+			{% endif %}
+			<div class="received-message my-3">
+				<p>{{ message.body }}</p>
+				{% if message.is_read %}
+				<p class="text-muted">Seen {{ message.read_timestamp }}</p>
+				{% endif %}
+				<form method="POST" action="{% url 'hod:delete-message' message.pk %}">
+					{% csrf_token %}
+					<button type="submit" class="btn btn-sm btn-danger">Delete</button>
+				</form>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	{% endfor %}
+	
+
+	<div class="row">
+		<div class="card col-md-12 p-3 shadow-sm">
+			<form method="POST" action="{% url 'hod:create-message' thread.pk %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form | crispy }}
+
+				<div class="d-grid gap-2 mt-3">
+					<button class="btn btn-light" type="submit">Send Message</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock content %}

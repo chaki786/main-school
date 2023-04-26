@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Follow Request</h1>
+  <p>{{ follow_request.follower }} wants to follow you.</p>
+  <form method="POST" action="{% url 'student:accept_follow_request' pk=follow_request.pk %}">
+    {% csrf_token %}
+    <button type="submit" name="accept">Accept</button>
+    <button type="submit" name="decline">Decline</button>
+  </form>
+{% endblock %}

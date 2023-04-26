@@ -1,0 +1,35 @@
+h1 {
+    color: red;
+    font-size: 70px;
+    text-align:center;
+    margin-top: 2%;
+    margin-bottom: 7%;
+}
+
+#profile-container {
+    text-align: left;
+    overflow: hidden;
+    margin-left: 5%;
+    margin-bottom: -5%;
+}
+
+#profile-container img {
+    width: 250px;
+    height: 300px;
+}
+.container {
+	float: right;
+    width: 75%;
+    font-size:18px;
+    margin-top: -15%;
+}
+
+ul{
+  list-style: none;
+}
+
+.container1 {
+	float: right;
+    width: 100%;
+    font-size:18px;
+}

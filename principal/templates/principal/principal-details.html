@@ -1,0 +1,82 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/index/aboutss11s.css' %}" />
+
+<h2>Principal Form</h2>
+
+    <form class="form-style-9">
+        <div class="la">
+            <h3><strong>Join-</strong>{{principal.join }} </h3>
+            <h3><strong>Seperate-</strong>{{principal.seperate}}</h3>
+        </div>
+        <div id="profile-container">
+            <a href="{% url 'hod:manage_principals' principal.user.id %}">
+                <img src="{{principal.photo_url}}">
+            </a>
+        </div>
+            
+        <div class="container"> 
+            <ul class="column">
+                <strong>First Name</strong> {{principal.fname}}
+            </ul>
+
+            <ul class="column">
+                <strong>Last Name</strong> {{principal.lname}}
+            </ul>
+
+            <ul class="column">
+                <strong> Gender </strong>{{principal.gender}}
+            </ul>
+
+            <ul class="column">
+                <strong>DOB </strong>{{principal.dob}}
+            </ul>
+
+            <ul class="column">
+                <strong>Qualification</strong> {{principal.qualification}}
+            </ul>
+
+            <ul class="column">
+                <strong>College Name</strong> {{principal.cname}}
+            </ul>
+
+            <ul class="column">
+                <strong>From</strong> {{principal.from1}}
+            </ul>
+
+            <ul class="column">
+                <strong>To</strong> {{principal.to}}
+            </ul>
+        </div>
+
+{% for principal_about in principal.principalabouts.all %}
+        <div class="container"> 
+            <ul class="column">
+                <strong>Qualification</strong> {{principal_about.qualification}}
+            </ul>
+
+            <ul class="column">
+                <strong>College Name</strong> {{principal_about.cname}}
+            </ul>
+
+            <ul class="column">
+                <strong>From</strong> {{principal_about.from1}}
+            </ul>
+
+            <ul class="column">
+                <strong>To</strong> {{principal_about.to}}
+            </ul>
+        </div>
+        
+        {% endfor %}
+
+        <div class="submit-div">
+            <ul>
+                <li>
+                    <a class="link_button" href='{{principal.get_edit_url }}'>Edit</a> 
+                    <a class="link_button" href='{{principal.get_delete_url }}'>Delete</a> 
+                </li>
+            </ul>
+        </div>
+    </form>
+

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index/photos2.css' %}" />
+<div class="love">
+  <a href = "{% url 'student:photo' %}" ><i class='fas fa-home' style='font-size:30px'></i></a>
+</div>
+  <div class="photo-detail">
+    <h1>{{ photo.author }}</h1>
+    <p>{{ photo.body}}</p>
+    <div class="photo-item">
+      {% if photo.image_or_video%}
+        {% if photo.image_or_video.name|lower|slice:'-3:' == 'mp4' %}
+          <video width="100%" height="auto" controls>
+            <source src="{{ photo.image_or_video.url }}" type="video/mp4">
+          </video>
+        {% else %}
+          <img src="{{ photo.image_or_video.url }}" alt="{{ post.body }}" class="photo-image">
+        {% endif %}
+      {% else %}
+        <img src="{{ photo.image_or_video.all.0.image.url }}" alt="{{ post.body }}" class="photo-image">
+      {% endif %}
+    <h3 class="photo-title">{{ post.body }}</h3>
+    <form method="POST" action="{{post.get_likes_url}}" class="lo">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <button class="remove-default-btn" type="submit">
+          <i class="far fa-thumbs-up"> <span>{{ photo.likes.all.count }}</span></i>
+      </button>
+    </form>
+    <form method="POST" action="{{post.get_dislikes_url}}" class="los">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <button class="remove-default-btn" type="submit">
+          <i class="far fa-thumbs-down"> <span>{{ photo.dislikes.all.count }}</span></i>
+      </button>
+    </form>
+    <form method="POST" action="{{post.get_comment_url}}" class="loss">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <button class="remove-default-btn" type="submit">
+          <i class="far fa-comment-dots"> <span>{{ photo.comment }}</span></i>
+      </button>
+    </form>
+    
+    
+    <form method="post" action="{% url 'student:photo_delete' photo.pk %}" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">Delete</button>
+    </form>
+  </div>
+{% endblock %}

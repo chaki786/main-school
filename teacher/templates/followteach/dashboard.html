@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-5 col-sm-6">
+    <a href = "{% url 'teacher:dashboard' %}" ><i class='fas fa-home' style='font-size:20px'></i></a>
+</div>
+<h2>Follow Requests Sent</h2>
+{% if follow_requests_sent %}
+    <ul>
+    {% for request in follow_requests_sent %}
+        <li>{{ request.following.username }} <a href="{% url 'teacher:accept_follow_request' request.pk %}">Accept</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven't sent any follow requests.</p>
+{% endif %}
+
+<h2>Follow Requests Received</h2>
+{% if follow_requests_received %}
+    <ul>
+    {% for request in follow_requests_received %}
+        <li>{{ request.follower.username }} <a href="{% url 'teacher:accept_follow_request' request.pk %}">Accept</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven't received any follow requests.</p>
+{% endif %}
+
+{% endblock %}

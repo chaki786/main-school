@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index/photos.css' %}" />
+
+<div class="love">
+  <a href = "{% url 'teacher:dashboard' %}" ><i class='fas fa-home' style='font-size:30px'></i></a>
+</div>
+
+  <h1>Gallery</h1>
+  <div class="photo-grid">
+    {% for post in posts %}
+      <a href="{% url 'teacher:photo_detail' post.id %}">
+        <div class="photo-item">
+            {% if post.image_or_video%}
+              {% if post.image_or_video.name|lower|slice:'-3:' == 'mp4' %}
+                <video width="100%" height="auto" controls>
+                  <source src="{{ post.image_or_video.url }}" type="video/mp4">
+                </video>
+              {% else %}
+                <img src="{{ post.image_or_video.url }}" alt="{{ post.body }}" class="photo-image">
+              {% endif %}
+            {% else %}
+              <img src="{{ post.image_or_video.all.0.image.url }}" alt="{{ post.body }}" class="photo-image">
+            {% endif %}
+          <h3 class="photo-title">{{ post.body }}</h3>
+          <form method="POST" action="{{post.get_likes_url}}" class="lol">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button class="remove-default-btn" type="submit">
+                <i class="far fa-thumbs-up"> <span>{{ post.likes.all.count }}</span></i>
+            </button>
+          </form>
+          <form method="POST" action="{{post.get_dislikes_url}}" class="losl">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button class="remove-default-btn" type="submit">
+                <i class="far fa-thumbs-down"> <span>{{ post.dislikes.all.count }}</span></i>
+            </button>
+          </form>
+          <form method="post" action="{% url 'teacher:photo_delete' post.pk %}" class="delete-form">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Delete</button>
+          </form>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}
+

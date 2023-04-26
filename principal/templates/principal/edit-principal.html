@@ -1,0 +1,140 @@
+{% load static %}
+
+<div class="roo">
+    <h1>Edit principal </h1> 
+</div>
+<link rel="stylesheet" href="{% static 'css/index/aboutss3.css' %}" />
+    
+<form role="form" action='{{principal.get_edit_url }}' method="POST" class="form-style-9" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div id="profile-container">
+            <image id="profileImage" src= "{{principals.photo_url}}" style="width:100px" /></div>
+            {{from2.profile_photo}}
+            <div class="container" >
+                    <ul class="personal-details" >
+                        <li>
+                            <ul class="column" >
+                                <li>
+                                    <label for="Join"> <strong> Join </strong> </label>
+                                    {{ form2.join }}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="seperate"> <strong> Seperate </strong> </label>
+                                    {{ form2.seperate }}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>	
+                                    <label for="fname"><strong>First Name </strong></label>
+                                    {{ form2.fname }}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="lname"> <strong> Last Name </strong></label>
+                                    {{ form2.lname }}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <tr>
+                                        <td for="gender"><strong>Sex:</strong></td>
+                                        <td>
+                                            {{ form2.gender }}
+                                        </td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="dob"> <strong> Date of birth </strong></label>
+                                    {{ form2.dob }}
+                                </li>
+                            </ul>
+                        </li>
+                    <div class='ingredient-form'>
+                        <li>
+                            <ul class="column" >
+                                <li>
+                                    <label for="cname"> <strong> College Name </strong></label>
+                                    {{ form2.cname }}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="qualification"> <strong> Qualification </strong></label>
+                                    <td>
+                                        {{form2.qualification }}
+                                    </td>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column">
+                                <li>
+                                    <label for="from1"> <strong> From </strong> </label>
+                                    {{ form2.from1 }}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="column" id="ingredient-form-list">
+                                <li>
+                                    <label for="to"> <strong> To </strong> </label>
+                                    {{ form2.to }}
+                                    {{ formset.management_form }}
+                                    {% for form in formset %}
+                                        <strong> {{ form.as_p }} </strong>
+                                    {% endfor %}
+                                </li>
+                            </ul>
+                        </li>
+                    </div>
+
+                    <li>
+                        <ul class="column">
+                            <li>
+                                {% if messages %}
+                                {% for message in messages %}
+                                {% if message.tags == 'error' %}
+                                <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% if message.tags == 'success' %}
+                                <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="submit-div">
+                    <ul>
+                        <li>    
+                            <button class="link_button" style='margin-top:10px;' type='submit' >Save</button>
+                            <button class="link_button2" style='margin-top:10px;' type='cancel' >Cancel</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
+
+<script src="{% static 'java/index/aboutss.js' %}"></script>
+

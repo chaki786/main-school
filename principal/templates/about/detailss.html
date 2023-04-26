@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/abouts11ss.css' %}" />
+<div class="love">
+    <a href = "{% url 'hod:dashboard' %}" ><i class='fas fa-home' style='font-size:30px'></i></a>
+</div>
+
+<div style='margin-top:50px;'>
+    <form action='.' method="POST">
+        {% csrf_token %}
+
+        <div class="about"  >
+            <h1>About</h1>
+        </div>
+    {% if about %}
+        <h1 class="text100">{{ about.content }}</h1>
+        <a class="link_button1" href="{% url 'hod:school_edit' school_id=about.id %}">Edit</a>
+        <a class="link_button1" href="{% url 'hod:delete_about' school_id=about.id %}">Delete</a>
+    {% else %}
+        <h1 class="text100">No about record found.</h1>
+        <a class="link_button1" href="{% url 'hod:school_create' %}">Create</a>
+    {% endif %}
+    </form>
+</div>
+
+        
+{% endblock content %}

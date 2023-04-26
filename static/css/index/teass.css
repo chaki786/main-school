@@ -1,0 +1,36 @@
+#profile-container {
+    text-align: left;
+    overflow: hidden;
+    margin-left: 5%;
+    margin-top: 4%;
+    margin-bottom: -18%;
+}
+.column{
+    margin-top: -45%;
+    padding: 23%;
+}
+
+h1 {
+    color: red;
+    font-size: 70px;
+    text-align:center;
+}
+
+.form-style-9 .container ul {
+    float: left;
+    width: 100%;
+    font-size:18px;
+}
+
+ul{
+  list-style: none;
+}
+
+#profile-container img {
+    width: 250px;
+    height: 300px;
+}
+.dee{
+    margin-left: -3%;
+    color: brown;
+}

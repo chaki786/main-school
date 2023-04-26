@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/studentselfs1.css' %}" />
+<link rel="stylesheet" href="{% static 'css/index/posts1ss.css' %}" />
+
+<div class="love">
+    <a href = "{% url 'teacher:dashboard' %}" ><i class='fas fa-home' style='font-size:30px'></i></a>
+</div>
+
+<h1>Profile</h1>
+
+<div class="row justify-content-center mt-5">
+    <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
+        <div class="text-center">
+
+            <a href="{% url 'teacher:edit_teacher' %}">
+            <img src="{{ teacher.photo_url }}" class="rounded-circle" width="200" height="200"></a>
+            {% if teacher.principal.school.id == request.user.teacher.principal.school.id %}
+                <a href="{% url 'polls:menu' school_id=request.user.teacher.principal.school.id %}">
+                    <h2>{{ teacher.principal.school.schoolname }}</h2>
+                </a> 
+            {% else %}
+                <a href="{% url 'polls:menu' school_id=teacher.principal.school.id %}">
+                    <h2>{{ teacher.principal.school.schoolname }}</h2>
+                </a> 
+            {% endif %}
+                <span>
+                    <a href="{% url 'teacher:edit_teacher' %}" class="edit-color"><i class="far fa-edit"></i>Edit</a>
+                </span>
+            </h3>
+        </div>
+        
+    <div class="mb-3">
+        <a href="{% url 'teacher:list-followers' teacher.pk %}"class="post-link">Followers: {{ number_of_followers }}</a>
+    </div>
+        {% if is_following %}
+            <form method="POST" action="{% url 'teacher:unfollow_profile' teacher.pk %}">
+                {% csrf_token %}
+                <button type="submit">Unfollow {{is_following.username}}</button>
+            </form>
+        {% else %}
+            <form method="POST" action="{% url 'teacher:follow_profile' teacher.pk %}">
+                {% csrf_token %}
+                <button type="submit">Follow</button>
+            </form>
+        {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 py-3">
+    <ul class="column">
+        <strong>Country:</strong> {{ teacher.principal.school.country }}
+    </ul>
+    <ul class="column">
+        <strong>City:</strong> {{ teacher.principal.school.city }}
+    </ul>
+    <ul class="column">
+        <strong>State:</strong> {{ teacher.principal.school.state }}
+    </ul>
+    <ul class="column">
+        <strong>First Name:</strong> {{ teacher.first_name }}
+    </ul>
+    <ul class="column">
+        <strong>Last Name:</strong> {{ teacher.last_name }}
+    </ul>
+    <ul class="column">
+        <strong>Gender:</strong> {{ teacher.gender }}
+    </ul>
+    <ul class="column">
+        <strong>Date of Birth:</strong> {{ teacher.dob }}
+    </ul>
+    <ul class="column">
+        <strong>Class:</strong> {{ teacher.classs }}
+    </ul>
+    <ul class="column">
+        <strong>Qualification:</strong> {{ teacher.qualification }}
+    </ul>
+    <ul class="column">
+        <strong>Join:</strong> {{ teacher.join }}
+    </ul>
+    <ul class="column">
+        <strong>Seperate:</strong> {{ teacher.seperate }}
+    </ul>
+{% for teacherabout in teacher.teacherabouts.all %}
+    <div class="container1">
+        <ul class="column">
+            <strong>Class</strong> {{teacherabout.classs}}
+        </ul>
+        <ul class="column">
+            <strong>Join</strong> {{teacherabout.join}}
+        </ul>
+        <ul class="column">
+            <strong>Seperate</strong> {{teacherabout.seperate}}
+        </ul>
+    </div>
+{% endfor %}
+</div>
+
+        </div>
+    </div>
+</div>
+{% for post in posts %}
+<div class="row justify-content-center mt-3">
+    <div class="col-md-5 col-sm-12 border-bottom position-relative">
+        <div class="ho">
+            {{post.post_type}}
+        </div>
+        
+        {% if post.shared_user %}
+        <div>
+            <a href="">
+                {% if post.shared_user.teacher %}
+                    <a href="{% url 'teacher:profile' post.shared_user.teacher.id %}">
+                        <img class="round-circle post-img" height="30" width="30" src="{{ post.shared_user.teacher.profile_photo.url }}" />
+                    </a>
+                {% elif post.shared_user.student %}
+                    <a href="{% url 'student:profile' post.shared_user.student.id %}">    
+                        <img class="round-circle post-img" height="30" width="30" src="{{ post.shared_user.student.profile_photo.url }}" />
+                    </a>
+                {% else %}
+                    <a href="{% url 'hod:profile' post.shared_user.principal.id %}">
+                        <img class="round-circle post-img" height="30" width="30" src="{{ post.shared_user.principal.profile_photo.url }}" />
+                    </a>
+                {% endif %}
+            </a>
+            <p class="post-text">
+                <a class="text-primary post-link" href=""></a> 
+                <a class="text-primary post-link" href="{% if post.shared_user.teacher %}
+                {% url 'teacher:profile' post.shared_user.teacher.id %}
+                {% elif post.shared_user.student %}
+                {% url 'student:profile' post.shared_user.student.id %}
+                {% else %}
+                {% url 'hod:profile' post.shared_user.principal.id %}
+                {% endif %}">
+                @{{ post.shared_user }} - shared a post on {{ post.shared_on }}
+                </a>
+            </p>
+        </div>
+        {% else %}
+        <div class="shared-post">
+            {% if post.author.teacher %}
+                <a href="{% url 'teacher:profile' post.author.teacher.id %}">
+                    <img class="round-circle post-img" height="30" width="30" src="{{ post.author.teacher.profile_photo.url }}" />
+                </a>
+            {% elif post.author.student %}
+                <a href="{% url 'student:profile' post.author.student.id %}">
+                    <img class="round-circle post-img" height="30" width="30" src="{{ post.author.student.profile_photo.url }}" />
+                </a>
+            {% else %}
+                <a href="{% url 'hod:profile' post.author.principal.id %}">
+                    <img class="round-circle post-img" height="30" width="30" src="{{ post.author.principal.profile_photo.url }}" />
+                </a>
+            {% endif %}
+            <p class="post-text">
+                <a class="text-primary post-link" href="{% if post.author.teacher %}{% url 'teacher:profile' post.author.teacher.id %}{% elif post.author.student %}{% url 'student:profile' post.author.student.id %}{% else %}{% url 'hod:profile'  post.author.principal.id %}{% endif %}">
+                    @{{ post.author }} - {{ post.created_on }}
+                </a>
+            </p>
+        </div>
+        {% endif %}
+        <form method="POST" action="{% url 'teacher:share-post' post.pk %}" class="d-none" id="{{ post.pk }}">
+            {% csrf_token %}
+            {{ shareform  }}
+            <div class="d-grid gap-2">
+                <button class="btn btn-success mt-3">share the post</button>
+            </div>
+        </form>
+        {% if post.shared_body %}
+        <div class="position-relative border-bottom mb-3 body">
+            <p>{{ post.shared_body }}</p>
+            <div class="row">
+                {% if new_post.is_video %}
+                    <video width="320" height="240" controls>
+                        <source src="{{ new_post.image_or_video.url }}" type="video/mp4">
+                    </video>
+                {% elif new_post.is_image %}
+                    <img src="{{ new_post.image_or_video.url }}" alt="{{ new_post.caption }}">
+                {% endif %}
+            </div>                
+        </div>
+        <div class="shared-post">
+            {% if post.author.teacher %}
+                <a href="{% url 'teacher:profile' post.author.teacher.id %}">
+                    <img class="round-circle post-img" height="30" width="30" src="{{ post.author.teacher.profile_photo.url }}" />
+                </a>
+            {% elif post.author.student %}
+                <a href="{% url 'student:profile' post.author.student.id %}">
+                    <img class="round-circle post-img" height="30" width="30" src="{{ post.author.student.profile_photo.url }}" />
+                </a>
+            {% else %}
+                <a href="{% url 'hod:profile' post.author.principal.id %}">
+                    <img class="round-circle post-img" height="30" width="30" src="{{ post.author.principal.profile_photo.url }}" />
+                </a>
+            {% endif %}
+            <p class="post-text">
+                <a class="text-primary post-link" href="{% if post.author.teacher %}{% url 'teacher:profile' post.author.teacher.id %}{% elif post.author.student %}{% url 'student:profile' post.author.student.id %}{% else %}{% url 'hod:profile'  post.author.principal.id %}{% endif %}">
+                    @{{ post.author }} - {{ post.created_on }}
+                </a>
+            </p>
+        </div>
+        {% endif %}
+        <div class="shared-post position-relative pt-3">
+              <div class="row">
+                {% if post.is_video %}
+                    <video width="320" height="240" controls>
+                        <source src="{{ post.image_or_video.url }}" type="video/mp4">
+                    </video>
+                {% elif post.is_image %}
+                    <img src="{{ post.image_or_video.url }}" alt="{{ post.caption }}">
+                {% endif %}
+              </div>
+            <div class="body">
+                <p>{{ post.body }}</p>
+            </div>
+            <a href="{% url 'teacher:post_detail' post.pk %}" class="stretched-link"></a>
+        </div>
+
+        <div class="d-flex flex-row">
+            <form method="POST" action="{{post.get_likes_url}}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <div class="thumbs-up-dropdown">
+                    <button class="remove-default-btn" type="submit">
+                        {% with likes_count=post.likes.all.count %}
+                            <i class="far fa-thumbs-up">
+                                <span>{{ likes_count }}</span>
+                            </i>
+                        {% endwith %}
+                    </button>
+                    <div class="dropdown-content">
+                        {% for like in post.likes.all %}
+                            <span>{{ like.username }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </form>                
+            <form method="POST" action="{{post.get_dislikes_url}}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <div class="thumbs-up-dropdown">
+                    <button class="remove-default-btn" type="submit">
+                        {% with dislikes_count=post.dislikes.all.count %}
+                            <i class="far fa-thumbs-down">
+                                <span>{{ dislikes_count }}</span>
+                            </i>
+                        {% endwith %}
+                    </button>
+                    <div class="dropdown-content">
+                        {% for dislike in post.dislikes.all %}
+                            <span>{{ dislike.username }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </form>
+
+    </div>
+</div>
+{% endfor %}
+<script src="{% static 'java/index/postss.js' %}"></script>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/aboutss3.css' %}" />
+
+<div class="about">
+    <h1>ABOUT </h1>
+</div>
+
+{% if edit_mode %}
+<div style='margin-top:30px;'>
+    <form action="{% url 'hod:school_edit' school.id %}" method="post">
+        {% csrf_token %}
+        {{ form.content }}
+        <div class="text11">
+            <button class="link_button" style='margin-top:10px;' type='submit' >Save</button>
+            <button class="link_button2" style='margin-top:10px;' type='cancel' >Cancel</button>
+        </div>
+    </form>
+{% else %}
+    <form action="{% url 'hod:school_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.content }}
+        <div class="text11">
+            <button class="link_button" style='margin-top:10px;' type='submit' >Save</button>
+            <button class="link_button2" style='margin-top:10px;' type='cancel' >Cancel</button>
+        </div>
+    </form>
+</div>
+{% endif %}
+{% endblock content %}

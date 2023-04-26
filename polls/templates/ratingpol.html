@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index/charts.css' %}" />
+
+<h1>Rating Chart</h1>
+<div class="love">
+  <a href="{% url 'polls:menus' %}"><i class='fas fa-home' style='font-size:30px'></i></a>
+</div>
+
+{% for chart in charts %}
+
+    <div class="chart-container">
+      <h3>{{ chart.post_type }}</h3>
+      <img src="data:image/png;base64,{{ chart.image }}" alt="Rating Chart" title="Post {{ chart.post_type }} - Likes: {{ chart.likes }}, Dislikes: {{ chart.dislikes }}">
+      <p>Likes: {{ chart.likes }}</p>
+      <p>Dislikes: {{ chart.dislikes }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

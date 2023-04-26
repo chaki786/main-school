@@ -1,0 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/index/delete.css' %}" />
+
+<form method='POST' action='{{school.get_delete_url }}'>
+    {% csrf_token %}
+    <p>Are you sure you want to delete? <strong>{{ item.content }}</strong> </p>
+    <a class="link_button" href="{% url 'hod:manage_principal' item.id %}">Cancel</a>
+    <button class="link_button" type='submit'>Yes, delete.</button>
+</form>
